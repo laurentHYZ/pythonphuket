@@ -1,0 +1,2571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Python presentation</title>
+<meta name="author" content="laurent"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/css/theme/black.css" id="theme"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h2>Python presentation</h2><h3>let&rsquo;s see</h3><p> laurent</p><p><a href="https://github.com/laurentHYZ/talk">https://github.com/laurentHYZ/talk</a></p>
+</section>
+<section id="table-of-contents-section">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-1">1. git</a></li>
+<li><a href="#/slide-2">2. Install emacs 26+</a></li>
+<li><a href="#/slide-3">3. Start configurating it</a></li>
+<li><a href="#/slide-4">4. Doom-emacs</a></li>
+<li><a href="#/slide-5">5. Clone doom-emacs</a></li>
+<li><a href="#/slide-6">6. Quickstart doom</a>
+<ul>
+<li><a href="#/slide-6-1">6.1. Done with your DOOMDIR? bin/doom install!</a></li>
+<li><a href="#/slide-6-2">6.2. Keep your DOOMDIR under version control</a></li>
+<li><a href="#/slide-6-3">6.3. Any future modifications of  your DOOMDIR?</a></li>
+<li><a href="#/slide-6-4">6.4. Keep up with Doom-emacs</a></li>
+<li><a href="#/slide-6-5">6.5. Troubleshoot</a></li>
+</ul>
+</li>
+<li><a href="#/slide-7">7. Projectile</a></li>
+<li><a href="#/slide-8">8. Dired and Treemacs</a>
+<ul>
+<li><a href="#/slide-8-1">8.1. Dired&#xa0;&#xa0;&#xa0;<span class="tag"><span class="test">test</span></span></a></li>
+</ul>
+</li>
+<li><a href="#/slide-9">9. Buffers, windows and basic navigation</a>
+<ul>
+<li><a href="#/slide-9-1">9.1. Buffers</a></li>
+<li><a href="#/slide-9-2">9.2. Windows as sections of your screen</a></li>
+<li><a href="#/slide-9-3">9.3. Frame: your emacs onscreen real-estate.</a></li>
+</ul>
+</li>
+<li><a href="#/slide-10">10. Installing packages in doom-emacs</a></li>
+<li><a href="#/slide-11">11. Change key-bindings</a></li>
+<li><a href="#/slide-12">12. navigating your buffer with AVY</a></li>
+<li><a href="#/slide-13">13. Evil-multiedit</a></li>
+<li><a href="#/slide-14">14. Org-mode&#xa0;&#xa0;&#xa0;<span class="tag"><span class="test">test</span></span></a>
+<ul>
+<li><a href="#/slide-14-1">14.1. Links within org-mode</a></li>
+<li><a href="#/slide-14-2">14.2. Snippets</a>
+<ul>
+<li><a href="#/slide-14-2-1">14.2.1. Snippets for source code</a></li>
+</ul>
+</li>
+<li><a href="#/slide-14-3">14.3. Tasks statuses: works on headlines!</a></li>
+<li><a href="#/slide-14-4">14.4. Priority cookies  S-up (for headlines again)</a></li>
+<li><a href="#/slide-14-5">14.5. <span class="done DONE">DONE</span> task a</a></li>
+<li><a href="#/slide-14-6">14.6. Tags with <code>SPC m q</code> and org-sparse-tree</a>
+<ul>
+<li><a href="#/slide-14-6-1">14.6.1. headline with one tag&#xa0;&#xa0;&#xa0;<span class="tag"><span class="test">test</span></span></a></li>
+<li><a href="#/slide-14-6-2">14.6.2. headline with 2 tags&#xa0;&#xa0;&#xa0;<span class="tag"><span class="test">test</span>&#xa0;<span class="testtag">testtag</span></span></a></li>
+</ul>
+</li>
+<li><a href="#/slide-14-7">14.7. Checkboxes</a>
+<ul>
+<li><a href="#/slide-14-7-1">14.7.1. Lists types: learn to propagate changes</a></li>
+<li><a href="#/slide-14-7-2">14.7.2. Checkbox your list [ ] (C-c C-c won&rsquo;t work)</a></li>
+<li><a href="#/slide-14-7-3">14.7.3. Marker/cookie to follow completion stage (/ or %)</a></li>
+<li><a href="#/slide-14-7-4">14.7.4. How to reuse a virgin version of the checkbox-aided routine?</a></li>
+</ul>
+</li>
+<li><a href="#/slide-14-8">14.8. Magit g git magit</a>
+<ul>
+<li><a href="#/slide-14-8-1">14.8.1. magithub</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#/slide-15">15. Demoing Stuff in emacs</a>
+<ul>
+<li><a href="#/slide-15-1">15.1. use command-log</a></li>
+</ul>
+</li>
+<li><a href="#/slide-16">16. Jokes</a></li>
+<li><a href="#/slide-17">17. Lisp Online class</a>
+<ul>
+<li><a href="#/slide-17-1">17.1. what are processes? what is their relationships with procedures?</a></li>
+<li><a href="#/slide-17-2">17.2. ok let&rsquo;s start with lisp</a>
+<ul>
+<li><a href="#/slide-17-2-1">17.2.1. Primitive data and procedures in Lisp</a></li>
+<li><a href="#/slide-17-2-2">17.2.2. Means of combinations</a></li>
+<li><a href="#/slide-17-2-3">17.2.3. Means of abstraction with DEFINE</a></li>
+<li><a href="#/slide-17-2-4">17.2.4. Recap of lesson 1</a></li>
+<li><a href="#/slide-17-2-5">17.2.5. Evaluating combos with the rule of substitution</a></li>
+<li><a href="#/slide-17-2-6">17.2.6. Evaluating conditional expression</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-1">
+<h2 id="1"><span class="section-number-2">1</span> git</h2>
+<p>
+takes &ldquo;snapshots&rdquo; of you files that you can modify, stage, and when you are ready to update the snapshot you simply commit your changes with the commit message.
+</p>
+<ol>
+<li><p>
+turn a folder into a Local Git Repo with:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-sh"><span style="color: #6272a4;"># </span><span style="color: #6272a4;">command for local </span><span style="color: #6272a4;">git</span>
+<span style="color: #bd93f9;">git</span> init <span style="color: #6272a4;"># </span><span style="color: #6272a4;">turns folder into a local </span><span style="color: #6272a4;">git</span><span style="color: #6272a4;"> repo, creates a </span><span style="color: #6272a4;">git</span><span style="color: #6272a4;"> folder, don't </span><span style="color: #6272a4;">touch</span><span style="color: #6272a4;"> it</span>
+<span style="color: #bd93f9;">git</span> config --global user.name <span style="color: #f1fa8c;">"laurent"</span> <span style="color: #6272a4;"># </span><span style="color: #6272a4;">add our name and email address to your init config</span>
+<span style="color: #bd93f9;">git</span> config --global user.email <span style="color: #f1fa8c;">"laurent_pinson@hotmail.com"</span>
+<span style="color: #bd93f9;">touch</span> test.txt <span style="color: #6272a4;"># </span><span style="color: #6272a4;">creates a file we will use</span>
+nano test.txt <span style="color: #6272a4;"># </span><span style="color: #6272a4;">open it and </span><span style="color: #6272a4;">make</span><span style="color: #6272a4;"> some changes</span>
+<span style="color: #bd93f9;">git</span> add test.txt <span style="color: #6272a4;"># </span><span style="color: #6272a4;">will add the file to the index/staging area</span>
+<span style="color: #bd93f9;">git</span> add . <span style="color: #6272a4;"># </span><span style="color: #6272a4;">will add all files within the current directory</span>
+<span style="color: #bd93f9;">git</span> <span style="color: #bd93f9;">rm</span> --cached index.html <span style="color: #6272a4;"># </span><span style="color: #6272a4;">git</span><span style="color: #6272a4;"> restore --staged test.txt</span>
+<span style="color: #bd93f9;">git</span> add test.txt <span style="color: #6272a4;"># </span><span style="color: #6272a4;">we add test.txt again to the stage</span>
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">also possible to "</span><span style="color: #6272a4;">git</span><span style="color: #6272a4;"> add *.txt"</span>
+<span style="color: #bd93f9;">git</span> status <span style="color: #6272a4;"># </span><span style="color: #6272a4;">check status of the working tree</span>
+<span style="color: #bd93f9;">git</span> commit -a <span style="color: #6272a4;"># </span><span style="color: #6272a4;">will commit and prompt you for a commit message. Commits to master by default.</span>
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">you can commit to branch too</span>
+<span style="color: #bd93f9;">git</span> branch my_new_branch <span style="color: #6272a4;"># </span><span style="color: #6272a4;">will create the branch my_new_branch</span>
+<span style="color: #bd93f9;">git</span> checkout my_new_branch <span style="color: #6272a4;"># </span><span style="color: #6272a4;">will bring you to the branch. Anything  you modify or create will only exist within that branch.</span>
+nano login.txt
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">Want to merge the login branch with the master branch? No pb, just go back to the master and merge</span>
+<span style="color: #bd93f9;">git</span> checkout master
+<span style="color: #bd93f9;">git</span> merge login
+<span style="color: #bd93f9;">touch</span> .gitignore  <span style="color: #6272a4;"># </span><span style="color: #6272a4;">creates a document that will list the files and directories you wish to be ignored during commits</span>
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">ex: test.txt /a_directory *.txt all text files etc</span>
+
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">see also:</span>
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">git</span><span style="color: #6272a4;"> status</span>
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">git</span><span style="color: #6272a4;"> diff (shows the differences before that are staged/added)</span>
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">git</span><span style="color: #6272a4;"> add -p (will go through differences and ask you to confirm stage/add)</span>
+
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">commands for remote </span><span style="color: #6272a4;">git</span><span style="color: #6272a4;">?</span>
+<span style="color: #bd93f9;">git</span> remote <span style="color: #6272a4;"># </span><span style="color: #6272a4;">will display the remote repo you might have referenced</span>
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">create a new repo in your github account, then add the link:</span>
+<span style="color: #bd93f9;">git</span> remote add origin https://github.com/laurentHYZ/test.git
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">prepare your github username and pasword, you will be prompted for them soom</span>
+<span style="color: #bd93f9;">git</span> push -u origin master <span style="color: #6272a4;"># </span><span style="color: #6272a4;">here you will be asked for your github info</span>
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">" branch 'master' set up to track remote branch 'master' from 'origin'"</span>
+
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">from that point on if you </span><span style="color: #6272a4;">make</span><span style="color: #6272a4;"> any change to a file here is what you need to do:</span>
+<span style="color: #bd93f9;">git</span> push <span style="color: #6272a4;"># </span><span style="color: #6272a4;">you will be asked for your credential each time</span>
+
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">once you have a remote repo you can try to clone it into</span>
+<span style="color: #6272a4;"># </span><span style="color: #6272a4;">if you do not mention the target folder github will create a default folder with same name as origin.</span>
+<span style="color: #bd93f9;">git</span> clone https://github.com/laurentHYZ/test.git test_local
+<span style="color: #bd93f9;">git</span> pull <span style="color: #6272a4;"># </span><span style="color: #6272a4;">pull latest from the remote repo</span>
+<span style="color: #bd93f9;">git</span> clone <span style="color: #6272a4;"># </span><span style="color: #6272a4;">clone remote directory into new directory</span>
+
+
+</pre>
+</div></li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-2">
+<h2 id="2"><span class="section-number-2">2</span> Install emacs 26+</h2>
+</section>
+</section>
+<section>
+<section id="slide-3">
+<h2 id="3"><span class="section-number-2">3</span> Start configurating it</h2>
+<p>
+You can do that by yourself, you can clone somebody&rsquo;s, or opt for popular emacs configuration project:
+</p>
+<ul>
+<li>Spacemacs</li>
+<li>Doom-emacs</li>
+<li>etc&#x2026;</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-4">
+<h2 id="4"><span class="section-number-2">4</span> Doom-emacs</h2>
+<p>
+Here we will explain the installation of doom-emacs.
+Similarly to most configurations, the doom-emacs config will &ldquo;live&rdquo; or will be placed in a <code>.emacs.d</code> directory.
+If you an existing .emacs.d config, just bak up those files.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-5">
+<h2 id="5"><span class="section-number-2">5</span> Clone doom-emacs</h2>
+<p>
+Ok so we will clone the doom-emacs git repo into an empty .emacs.d directory in your home directory.
+Once that is done, just cd in that directory and switch to develop branch:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-sh"><span style="color: #bd93f9;">git</span> checkout develop
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-6">
+<h2 id="6"><span class="section-number-2">6</span> Quickstart doom</h2>
+<div class="org-src-container">
+
+<pre  class="src src-sh"><span style="color: #bd93f9;">cd</span> ~/.emacs.d/bin/doom quickstart
+</pre>
+</div>
+<p>
+It will set up all required files with default values as well as some packages.
+We can start emacs.
+Doom-emacs as a configuration is constantly being updated and fixed, so if you have any personal change you would like to be applied to the cloned doom-emacs you should put those inside a dedicated directory (often referred as DOOMDIR) usually located in .doom.d/ that was already created during quickstart, and typically it contains 2 important files:
+</p>
+<ul>
+<li>config.el: usually it comes empty</li>
+<li>init.el: that&rsquo;s where you uncomment all the packages that you want installed.</li>
+
+</ul>
+<p>
+THere is one additional file that you might want to put within your DOOMDIR: packages.el
+It contains all the packages that you wish to install on top of the builtin packages you have picked already.
+</p>
+</section>
+<section id="slide-6-1">
+<h3 id="6-1"><span class="section-number-3">6.1</span> Done with your DOOMDIR? bin/doom install!</h3>
+<p>
+Simply go back to .emacs.d and launch the bin/doom command.
+</p>
+</section>
+<section id="slide-6-2">
+<h3 id="6-2"><span class="section-number-3">6.2</span> Keep your DOOMDIR under version control</h3>
+<ol>
+<li>Create a github repo
+<ol>
+<li>Push your DOOMDIR</li>
+
+</ol></li>
+
+</ol>
+</section>
+<section id="slide-6-3">
+<h3 id="6-3"><span class="section-number-3">6.3</span> Any future modifications of  your DOOMDIR?</h3>
+<ul>
+<li>make sure you &rsquo;bin/doom refresh&rsquo; them</li>
+<li>push them to github</li>
+
+</ul>
+</section>
+<section id="slide-6-4">
+<h3 id="6-4"><span class="section-number-3">6.4</span> Keep up with Doom-emacs</h3>
+<ul>
+<li>bin/doom upgrade will upgrade your doom</li>
+<li>bin/doom update will update the packages.</li>
+
+</ul>
+</section>
+<section id="slide-6-5">
+<h3 id="6-5"><span class="section-number-3">6.5</span> Troubleshoot</h3>
+<ul>
+<li>bin/doom doctor</li>
+<li>discord</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-7">
+<h2 id="7"><span class="section-number-2">7</span> Projectile</h2>
+</section>
+</section>
+<section>
+<section id="slide-8">
+<h2 id="8"><span class="section-number-2">8</span> Dired and Treemacs</h2>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Space-o p</td>
+<td class="org-left">Toggles Treemacs showing the files and folders within the current project</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-8-1">
+<h3 id="8-1"><span class="section-number-3">8.1</span> Dired&#xa0;&#xa0;&#xa0;<span class="tag"><span class="test">test</span></span></h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Explanation</th>
+<th scope="col" class="org-left">command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Opens dired</td>
+<td class="org-left">S+o+-</td>
+</tr>
+
+<tr>
+<td class="org-left">opens and shows all items within the current directory</td>
+<td class="org-left">Dble space</td>
+</tr>
+
+<tr>
+<td class="org-left">dives inside directory / opens file</td>
+<td class="org-left">enter</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">moves up to parent directory</td>
+<td class="org-left">-</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">creates directory</td>
+<td class="org-left">+</td>
+</tr>
+
+<tr>
+<td class="org-left">creates file</td>
+<td class="org-left">Space + .</td>
+</tr>
+
+<tr>
+<td class="org-left">marks file/folder for deletion</td>
+<td class="org-left">d</td>
+</tr>
+
+<tr>
+<td class="org-left">execute the deletion</td>
+<td class="org-left">x</td>
+</tr>
+
+<tr>
+<td class="org-left">sort by name and dates</td>
+<td class="org-left">o (order)</td>
+</tr>
+
+<tr>
+<td class="org-left">chmod commands 3:00</td>
+<td class="org-left">ex: u-w,g+w</td>
+</tr>
+
+<tr>
+<td class="org-left">change owner</td>
+<td class="org-left">O</td>
+</tr>
+
+<tr>
+<td class="org-left">select all directories</td>
+<td class="org-left">*/</td>
+</tr>
+
+<tr>
+<td class="org-left">switch/toggle from directories to files and back</td>
+<td class="org-left">t</td>
+</tr>
+
+<tr>
+<td class="org-left">mark item</td>
+<td class="org-left">m</td>
+</tr>
+
+<tr>
+<td class="org-left">unmark</td>
+<td class="org-left">u</td>
+</tr>
+
+<tr>
+<td class="org-left">rename buffer with insert mode</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Move file/dir from one buffer/directory to another</td>
+<td class="org-left">R</td>
+</tr>
+
+<tr>
+<td class="org-left">Once/if you have 2 dired buffer</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">goal</th>
+<th scope="col" class="org-left">key bindings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">switch from one window to the other</td>
+<td class="org-left">Sp w w</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section>
+<section id="slide-9">
+<h2 id="9"><span class="section-number-2">9</span> Buffers, windows and basic navigation</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+</section>
+<section id="slide-9-1">
+<h3 id="9-1"><span class="section-number-3">9.1</span> Buffers</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">description</th>
+<th scope="col" class="org-left">key bindings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">show all items within current workspace</td>
+<td class="org-left">Sp Sp</td>
+</tr>
+
+<tr>
+<td class="org-left">show all open buffers within the workspace</td>
+<td class="org-left">Sp b b  or Sp .</td>
+</tr>
+
+<tr>
+<td class="org-left">show all open buffers across workspaces</td>
+<td class="org-left">Sp b B</td>
+</tr>
+
+<tr>
+<td class="org-left">show all invisible buffers across workspaces</td>
+<td class="org-left">Sp b B Sp</td>
+</tr>
+
+<tr>
+<td class="org-left">kill a buffer that you do not need</td>
+<td class="org-left">Sp b k</td>
+</tr>
+
+<tr>
+<td class="org-left">create new buffer</td>
+<td class="org-left">Sp b N</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-9-2">
+<h3 id="9-2"><span class="section-number-3">9.2</span> Windows as sections of your screen</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">description</th>
+<th scope="col" class="org-left">key bindings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Create a vertical split</td>
+<td class="org-left">Sp w v (vertical)</td>
+</tr>
+
+<tr>
+<td class="org-left">Create a horizontal split</td>
+<td class="org-left">Sp w s</td>
+</tr>
+
+<tr>
+<td class="org-left">Jump from one window to another</td>
+<td class="org-left">Sp w w</td>
+</tr>
+
+<tr>
+<td class="org-left">Cycle through windows</td>
+<td class="org-left">Sp ww</td>
+</tr>
+
+<tr>
+<td class="org-left">Navigate through windows</td>
+<td class="org-left">Sp w h/j/k/l</td>
+</tr>
+
+<tr>
+<td class="org-left">Close window with</td>
+<td class="org-left">Sp w d</td>
+</tr>
+
+<tr>
+<td class="org-left">wv</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="slide-9-3">
+<h3 id="9-3"><span class="section-number-3">9.3</span> Frame: your emacs onscreen real-estate.</h3>
+</section>
+</section>
+<section>
+<section id="slide-10">
+<h2 id="10"><span class="section-number-2">10</span> Installing packages in doom-emacs</h2>
+<p>
+I think <a href="https://www.youtube.com/watch?v=WSF4EgQqa3Q&amp;list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj&amp;index=15">this</a> video @4:30 is a very good summary of package installation in doom-emacs!
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">description</th>
+<th scope="col" class="org-left">key bindings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Access your packages.el within DOOMDIR</td>
+<td class="org-left">Sp f p etc</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+<p>
+Within your packages.el you simply declare the package you wish to be downloaded and installed form the internet.
+Similar to many package management, except here there is no need to provide packages&rsquo; version number.
+</p>
+<ol>
+<li><p>
+Edit your packages.el within your DOOMDIR
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><span style="color: #61bfff;">(</span><span style="color: #ff79c6;">package!</span> org-super-agenda<span style="color: #61bfff;">)</span>
+</pre>
+</div></li>
+<li>Go to ~/.emacs.d and bin/doom refresh</li>
+<li><p>
+Go to config.el and do the following
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><span style="color: #61bfff;">(</span>def-package! org-super-agenda
+
+
+  <span style="color: #61bfff;">)</span>  <span style="color: #6272a4;">;;</span><span style="color: #6272a4;">macro used for package configuration in doom, it is a thin wrapper around use-package</span>
+</pre>
+</div>
+<p>
+ Note: if you want to know more about def-package! here is what you can do:
+Sp-h-f(describe function)  and input <span class="underline">def-package!</span>.
+</p></li>
+
+</ol>
+</section>
+</section>
+<section>
+<section id="slide-11">
+<h2 id="11"><span class="section-number-2">11</span> Change key-bindings</h2>
+<p>
+Check <a href="https://www.youtube.com/watch?v=FJq__bBi0nI&amp;list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj&amp;index=16">this video @5:20</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-12">
+<h2 id="12"><span class="section-number-2">12</span> navigating your buffer with AVY</h2>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">description</th>
+<th scope="col" class="org-left">key bindings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">search for a (string of) character(s)</td>
+<td class="org-left">g s Sp</td>
+</tr>
+
+<tr>
+<td class="org-left">want this behavior across windows?</td>
+<td class="org-left">Sp h v</td>
+</tr>
+
+<tr>
+<td class="org-left">First let&rsquo;s access variable description</td>
+<td class="org-left">Sp h v</td>
+</tr>
+
+<tr>
+<td class="org-left">&#x2026;then check avy-all-windows, and toggle it to t</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">go-to word and delete it</td>
+<td class="org-left">g s Sp, then x-suggestedLettersCombo</td>
+</tr>
+
+<tr>
+<td class="org-left">go-to and correct spelling with ispell</td>
+<td class="org-left">g s Sp, UrTarget, i+suggestedLettersCombo</td>
+</tr>
+
+<tr>
+<td class="org-left">teleport</td>
+<td class="org-left">g s Sp, UrTarget, t+selection</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Place une chaise au niveau de la cuisine, Thales en aura besoin
+Prepare la</li>
+<li>Prendre feuille bleue, la mettre sur le sol ( en lestant les coins )</li>
+<li>Prendre le carton et placer chaque objet a&rsquo; la place qui lui revient sur la feuille bleue.</li>
+<li>INSPECTION (demander a&rsquo; Papa de verifier le boulot)</li>
+<li>Ouvre B, sors une recharge de colle, place la dans le pistolet C</li>
+<li>prendre C, connecte son chargeur E, prepare un feuille A4</li>
+<li>connecte le pistolet, connecte le tout au reseau electrique au niveau de la machine a&rsquo; cafe,</li>
+<li>place ta feuille A4 sous le pistolet pour proteger le plan de travail de la colle liquide qui va couler du pistolet une fois que celui ci sera pret a&rsquo; ete utilise/</li>
+<li>INSPECTION</li>
+<li>prendre l&rsquo;objet H et utilise le pour couper la bobine A afin d&rsquo;obtenir des fils de longueur K
+Combien de bouts de fils? Compte le nombre de billes dans D et coupe un fil pour chaque bille</li>
+<li>Marque le milieu de chaque fil a&rsquo; l&rsquo;aide du crayon L</li>
+<li>INSPECTION+ BRIEFING</li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-13">
+<h2 id="13"><span class="section-number-2">13</span> Evil-multiedit</h2>
+<p>
+Powerful plugin/package by the author of spacemacs.
+<a href="https://www.youtube.com/watch?v=zXdT5jY_ui0&amp;list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj&amp;index=8">Check this out</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-14">
+<h2 id="14"><span class="section-number-2">14</span> Org-mode&#xa0;&#xa0;&#xa0;<span class="tag"><span class="test">test</span></span></h2>
+<p>
+Personal knowledge Manager and outline tool.
+A typical org-mode document that consists of:
+</p>
+<ul>
+<li>metadata</li>
+<li>titles and content</li>
+<li>tables etc</li>
+
+</ul>
+<p>
+Org-mode documents are in fact simple non-prioritary text formatted.
+Let&rsquo;s start
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">description</th>
+<th scope="col" class="org-left">key bindings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">promote or demote</td>
+<td class="org-left">M-h and M-l</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>unnumbered list</li>
+<li>numbered list</li>
+
+</ul>
+</section>
+<section id="slide-14-1">
+<h3 id="14-1"><span class="section-number-3">14.1</span> Links within org-mode</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">description</th>
+<th scope="col" class="org-left">key-bindings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">inner-doc links</td>
+<td class="org-left"><code>+ [[HeadlineName]]</code></td>
+</tr>
+
+<tr>
+<td class="org-left">create new link</td>
+<td class="org-left">Sp n l</td>
+</tr>
+
+<tr>
+<td class="org-left">cross-doc link</td>
+<td class="org-left">Sp m l l then locate stored link</td>
+</tr>
+
+<tr>
+<td class="org-left">refiling links</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>weblinks</li>
+
+</ul>
+<p>
+<a href="https://www.youtube.com/watch?v=BRqjaN4-gGQ&amp;list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj&amp;index=10">This</a>  is a great video about linking in doom-emacs.
+Here is how you link:
+First you copy the url you want to refer to, then you
+Sp m l l, and evil-paste-after to paste (simple P will not paste, at least it did not in my emacs config).
+</p>
+<ul>
+<li>links to other parts of the document</li>
+
+</ul>
+<p>
+This is how we would create a link to the next section called &ldquo;Snippets&rdquo;:
+<code>= + [[Snippets]] =</code>
+As long as you hit Enter you are take there
+-Link to another part of the document: + ContentOfTheLink Sp m l target
+</p>
+<ul>
+<li><a href="#/slide-14-2-1" class="forwardlink">14.2.1</a></li>
+
+<li id="Link to another document: visual select then Sp m l l file: +filepath">HeadlineName or line#
+ You can actually link to a word within the document, all you need is to access the variable org-link-search-must-match-exact-headline (using Sp h v)and set the default value from &rsquo;query-to-create to nil. From that point on you can simply refer to the target using the aforementioned Sp m l l, pick the file location and add ::yourWord. Voila!
+abc</li>
+<li>links to elisp evaluation
+In other words we can have link that will trigger evalutation when clicked
+Here is <a href="(* 333 1234)">333*1234</a></li>
+
+</ul>
+<p>
+abc
+  All right so now we can execute code upon click, that means we can execute functions with a click, correct?
+  Let&rsquo;s make so that the user can simply click in order to call the org-agenda function:
+  You want to run the org-agenda? click <a href="org-agenda">here</a>
+  List files in my directory<a href=" ls -la">here</a>
+</p>
+<ul>
+<li>links to words</li>
+<li>bookmarks</li>
+<li>refiling links to headlines within your document</li>
+
+</ul>
+
+
+<p>
+<i>home/laurent</i>.doom.d/config.el
+</p>
+
+</section>
+<section id="slide-14-2">
+<h3 id="14-2"><span class="section-number-3">14.2</span> Snippets</h3>
+<div class="outline-text-3" id="text-14-2">
+</div>
+</section>
+<section id="slide-14-2-1">
+<h4 id="14-2-1"><span class="section-number-4">14.2.1</span> Snippets for source code</h4>
+<ul>
+<li>&ldquo;&lt;s&rdquo;</li>
+
+</ul>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #ff79c6;">for</span> item <span style="color: #ff79c6;">in</span> <span style="color: #ffb86c;">range</span>(<span style="color: #ff5555; font-weight: bold;">22</span>):
+    <span style="color: #ff79c6;">print</span>(item)
+</pre>
+</div>
+
+<p>
+If you want to work on that code from within a dedicated buffer simple type &rsquo; (that is Sp m &rsquo;).
+</p>
+
+<p>
+<b>*</b>
+</p>
+<ol class="org-ol">
+<li><a id="14-2-1-1"></a>HOLD<br /></li>
+</ol>
+
+</section>
+<section id="slide-14-3">
+<h3 id="14-3"><span class="section-number-3">14.3</span> Tasks statuses: works on headlines!</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">description</th>
+<th scope="col" class="org-left">key-bindings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">access todo menu</td>
+<td class="org-left">Sp m t</td>
+</tr>
+
+<tr>
+<td class="org-left">cycle through todo statuses</td>
+<td class="org-left">S + &lt;&#x2013; &#x2013;&gt;</td>
+</tr>
+
+<tr>
+<td class="org-left">add your file to the sniffer</td>
+<td class="org-left">org-agenda-file-to-front</td>
+</tr>
+
+<tr>
+<td class="org-left">see all todo items gathered by sniffer</td>
+<td class="org-left">Sp o a t</td>
+</tr>
+
+<tr>
+<td class="org-left">filter items by their status</td>
+<td class="org-left">N r (0r for all tasks, 1r for TODOs)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">YOU CAN FOCUS YOUR WORK ON SPECIFIC FOLDER</td>
+<td class="org-left">Access the org-agenda-files var and set its value</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-14-4">
+<h3 id="14-4"><span class="section-number-3">14.4</span> Priority cookies  S-up (for headlines again)</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">description</th>
+<th scope="col" class="org-left">key-bindings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">ajjust priority level with</td>
+<td class="org-left">S-up</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section id="slide-14-5">
+<h3 id="14-5"><span class="section-number-3">14.5</span> <span class="done DONE">DONE</span> task a</h3>
+</section>
+<section id="slide-14-6">
+<h3 id="14-6"><span class="section-number-3">14.6</span> Tags with <code>SPC m q</code> and org-sparse-tree</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">description</th>
+<th scope="col" class="org-left">key-bindings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">set headline tag</td>
+<td class="org-left">SPC m q</td>
+</tr>
+
+<tr>
+<td class="org-left">view tagged items</td>
+<td class="org-left">SPC o a m</td>
+</tr>
+
+<tr>
+<td class="org-left">view tagged portion of org-sparse-tree</td>
+<td class="org-left">C-c / m</td>
+</tr>
+</tbody>
+</table>
+<p>
+Here I will only talk about local/headlin tags. We will see global tags later.
+The table above shows how to set tags and view tagged items. Note that once you have tagged a title, this tag will be bound to this headline as well as with its children.
+</p>
+</section>
+<section id="slide-14-6-1">
+<h4 id="14-6-1"><span class="section-number-4">14.6.1</span> headline with one tag&#xa0;&#xa0;&#xa0;<span class="tag"><span class="test">test</span></span></h4>
+</section>
+<section id="slide-14-6-2">
+<h4 id="14-6-2"><span class="section-number-4">14.6.2</span> headline with 2 tags&#xa0;&#xa0;&#xa0;<span class="tag"><span class="test">test</span>&#xa0;<span class="testtag">testtag</span></span></h4>
+</section>
+<section id="slide-14-7">
+<h3 id="14-7"><span class="section-number-3">14.7</span> Checkboxes</h3>
+<p>
+Todos are good, and used for headlines. When you want to be more granular and use checkboxes that&rsquo;s possible as well.
+</p>
+
+</section>
+<section id="slide-14-7-1">
+<h4 id="14-7-1"><span class="section-number-4">14.7.1</span> Lists types: learn to propagate changes</h4>
+<p>
+Imagine you have built a list of tasks. You want to go from ul to ol?
+Simply modify the first element and let C-c C-c propagate the change.
+</p>
+<ul>
+<li>a</li>
+<li>b</li>
+<li>c</li>
+<li>d</li>
+
+</ul>
+
+
+</section>
+<section id="slide-14-7-2">
+<h4 id="14-7-2"><span class="section-number-4">14.7.2</span> Checkbox your list [ ] (C-c C-c won&rsquo;t work)</h4>
+<ol>
+<li class="trans"><code>[-]</code> a
+<ol>
+<li class="on"><code>[X]</code> </li>
+
+<li class="off"><code>[&#xa0;]</code> </li>
+
+</ol></li>
+<li class="off"><code>[&#xa0;]</code> b</li>
+<li class="off"><code>[&#xa0;]</code> c</li>
+<li class="off"><code>[&#xa0;]</code> d</li>
+<li class="off"><code>[&#xa0;]</code> <ul>
+<li class="off"><code>[&#xa0;]</code> </li>
+
+<li class="off"><code>[&#xa0;]</code> </li>
+
+<li class="off"><code>[&#xa0;]</code> </li>
+
+</ul></li>
+
+</ol>
+</section>
+<section id="slide-14-7-3">
+<h4 id="14-7-3"><span class="section-number-4">14.7.3</span> Marker/cookie to follow completion stage (/ or %)</h4>
+<ul>
+<li><code>[0%]</code>
+<ul>
+<li class="off"><code>[&#xa0;]</code> </li>
+
+<li class="off"><code>[&#xa0;]</code> </li>
+
+<li class="off"><code>[&#xa0;]</code> </li>
+
+<li class="off"><code>[&#xa0;]</code> </li>
+
+<li class="off"><code>[&#xa0;]</code> </li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-14-7-4">
+<h4 id="14-7-4"><span class="section-number-4">14.7.4</span> How to reuse a virgin version of the checkbox-aided routine?</h4>
+</section>
+<section id="slide-14-8">
+<h3 id="14-8"><span class="section-number-3">14.8</span> Magit g git magit</h3>
+<div class="outline-text-3" id="text-14-8">
+</div>
+</section>
+<section id="slide-14-8-1">
+<h4 id="14-8-1"><span class="section-number-4">14.8.1</span> magithub</h4>
+<p>
+magithub-clone
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">description</th>
+<th scope="col" class="org-left">key-bindings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">jump to the magit status buffer</td>
+<td class="org-left">C-x g</td>
+</tr>
+
+<tr>
+<td class="org-left">refresh git status</td>
+<td class="org-left">g r</td>
+</tr>
+
+<tr>
+<td class="org-left">switch to open buffer</td>
+<td class="org-left">C b b</td>
+</tr>
+
+<tr>
+<td class="org-left">Diffing</td>
+<td class="org-left">D</td>
+</tr>
+
+<tr>
+<td class="org-left">Logging</td>
+<td class="org-left">L</td>
+</tr>
+
+<tr>
+<td class="org-left">Blaming</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Staging</td>
+<td class="org-left">s/u/S/U</td>
+</tr>
+
+<tr>
+<td class="org-left">``</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section>
+<section id="slide-15">
+<h2 id="15"><span class="section-number-2">15</span> Demoing Stuff in emacs</h2>
+<div class="outline-text-2" id="text-15">
+</div>
+</section>
+<section id="slide-15-1">
+<h3 id="15-1"><span class="section-number-3">15.1</span> use command-log</h3>
+
+
+</section>
+</section>
+<section>
+<section id="slide-16">
+<h2 id="16"><span class="section-number-2">16</span> Jokes</h2>
+<ul>
+<li>digression machine:
+&ldquo;c&rsquo;est a&rsquo; tomber parterre!
+<ul>
+<li>ca veut dire quoi</li>
+<li>ca veut dire &#x2026;
+<ul>
+<li>ca veut dire que blablabla. Putain arrete tes digressions a&rsquo; la con</li>
+<li>ok tu as raison</li>
+
+</ul></li>
+<li>mmm c&rsquo;est delicieux, une vraie tuerie&ldquo;</li>
+
+</ul></li>
+
+<li><p>
+forewords: these sketches might seem violent and unbearable for some readers, however note that they are a soft version of reality
+</p>
+<ul>
+<li><p>
+&ldquo; ni shi e? ni yao mian1bao1?
+</p>
+<ul>
+<li>putain get your tones straight, you are going to mess up his chinese!</li>
+<li>Ok tu as raison.</li>
+
+</ul>
+<p>
+-xiexie &ldquo;
+</p>
+<ul>
+<li>xiexie ma1ma3!</li>
+<li>fuck&ldquo;</li>
+
+</ul></li>
+
+</ul>
+<p>
+-I am not from your hometown, I am not a whore.
+   &ldquo; You don&rsquo;t know me, you never saw me mad, beware because I am going to go mad! I am from the hood!&rdquo;
+   &ldquo; You are from the hood, you are from wudaokou you are so tough&rdquo;
+   &ldquo; Well I am from wudaokou, I am not from your hometown! I am not a whore!&rdquo;
+</p>
+<ul>
+<li></li>
+
+</ul></li>
+
+</ul>
+<p>
+*
+</p>
+</section>
+</section>
+<section>
+<section id="slide-17">
+<h2 id="17"><span class="section-number-2">17</span> Lisp Online class</h2>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">terms</th>
+<th scope="col" class="org-left">definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">process</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+<p>
+Computer Science is not a science, just as geo-metrie is not about using tools to mesure areas.
+Let&rsquo;s follow along Hal Abelson and Gerald Jay Sussman and imagine that computer science is akin to magic.
+Right now we are in the early days of computer sciences and we might not realize that the heart of our work is an attempt at formalizing our intuition about the way things work. We are trying to develop a precise language that explain processes ( how to do things )
+Declarative knowledge:
+</p>
+<blockquote>
+<p>
+sqrt(x) is the y such that:
+Y** = x  and y&gt;= 0
+</p>
+</blockquote>
+<p>
+Imperative knowledge/method/process: finding the sqrt by successive averaging
+</p>
+<blockquote>
+<p>
+make a guess G
+improve the guess by averaging G and x/G
+keep improving the guess until it is good enough
+</p>
+</blockquote>
+<p>
+135764
+</p>
+</section>
+<section id="slide-17-1">
+<h3 id="17-1"><span class="section-number-3">17.1</span> what are processes? what is their relationships with procedures?</h3>
+<p>
+They are like magical spirits that live in the computer and do some things.
+Processes are controlled by patterns of rules called procedures.
+We want to use that magic, and as all sorcerers use mysterious languages ( summerian, babylonian etc )&#x2026;we are going to control our spirits using a language called LISP as this language was designed to cast the spells (writing procedures) in order direct the processes.
+Learning the rules of LISP is easy, just like with chess rules can be learnt in a matter of minutes.
+Just like chess it is not easy to understand the consequences of the rules, and apply them properly.
+Unlike chess it is frequent in computer sciences that the problems that we are trying to solve are so large that the programs can spread across thousands of page and are soon too complex to be managed by one single person&#x2026;and that in fact puts some new stress on the your program&#x2026;and so the corner-stone of computer science become the development of techniques to control the complexity of large systems.
+Is that anything new? Various industries rely on complex systems, but they also have to deal with real components while CS is dealing with idealized components, and so when building a program there is not much difference between what you can imagine and what you can build (hence the analogy with magic).
+In conclusion CS is an abstract form of engineering as you can ignore the constraints imposed by reality.
+What are the techniques used in CS? some are specific to CS, some are used in other industries:
+</p>
+<ul>
+<li>black-box abstraction to suppress detailed implementation so as to be able to move on to bigger boxes</li>
+<li>conventional interfaces
+So that we can (* 2 (+ a b)) can be used with integers, vectors, wavelength etc. or any objects a, b that some coders might want to plug to our existing black box extractions.
+<ul>
+<li>generic operations</li>
+<li>large-scale structures</li>
+<li>OOP</li>
+<li>operation of aggregates</li>
+<li></li>
+
+</ul></li>
+<li>making new design language.
+We will express in LISP the process of interpreting LISP itself.</li>
+<li>metalinguistic abstraction
+<ul>
+<li>interpretation apply-eval</li>
+<li>ex of using the apply-eval loop to create a new language: logic programming</li>
+<li>implementation on hardware</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-17-2">
+<h3 id="17-2"><span class="section-number-3">17.2</span> ok let&rsquo;s start with lisp</h3>
+<p>
+questions to ask:
+</p>
+<ul>
+<li>primitive elements</li>
+<li>means of combination (using primitive elements to create new objects)</li>
+<li>means of abstraction ( using what we create as abstract elements )</li>
+
+</ul>
+</section>
+<section id="slide-17-2-1">
+<h4 id="17-2-1"><span class="section-number-4">17.2.1</span> Primitive data and procedures in Lisp</h4>
+</section>
+<section id="slide-17-2-2">
+<h4 id="17-2-2"><span class="section-number-4">17.2.2</span> Means of combinations</h4>
+<p>
+In lisp 3 is a primitive data (or its representation of Plato&rsquo;s 3),2.5 is a primitive data, 0.5 as well.
+&ldquo;+&rdquo; is also a primitive object in lisp.
+What is the sum of 3, 2.5 and 0.5? Well let&rsquo;s just apply the sum operator to those 3 numbers,Gkj
+(+ 3 2.5 0.5) is called a combination. Combo usually apply an operator to operands and are between parenthesis.
+Note that operands themselves can be combinations:
+(+ (+ 2 3) 5)
+</p>
+
+<ol class="org-ol">
+<li><a id="17-2-2-1"></a>Prefix notation<br />
+<div id="org9fcc299" class="figure">
+<p><img src="file:///home/laurent/Documents/tree.png" alt="tree.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>This is the caption for the next figure link (or table)</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="slide-17-2-3">
+<h4 id="17-2-3"><span class="section-number-4">17.2.3</span> Means of abstraction with DEFINE</h4>
+<p>
+We can define new vocabulary
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-common-lisp"><span style="color: #61bfff;">(</span>DEFINE A <span style="color: #ff79c6;">(</span>* <span style="color: #ff5555; font-weight: bold;">5</span> <span style="color: #ff5555; font-weight: bold;">5</span><span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+</pre>
+</div>
+<p>
+We can also define more general function
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-common-lisp"><span style="color: #61bfff;">(</span>DEFINE <span style="color: #ff79c6;">(</span>SQUARE X<span style="color: #ff79c6;">)</span> <span style="color: #ff79c6;">(</span>* X X<span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+
+</pre>
+</div>
+<p>
+The definition above is ok, but that&rsquo;s syntactic sugar (that&rsquo;s a more convenient way) for the real code below.
+Using lambda within the definition makes it clearer that we are indeed naming something that is a procedure, and it is also more faithful to the way things happen.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-common-lisp"><span style="color: #61bfff;">(</span>DEFINE SQUARE <span style="color: #ff79c6;">(</span><span style="color: #ff79c6;">LAMBDA</span> <span style="color: #50fa7b;">(</span>X<span style="color: #50fa7b;">)</span> <span style="color: #50fa7b;">(</span>* X X<span style="color: #50fa7b;">)</span><span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+<span style="color: #6272a4;">;;; </span><span style="color: #6272a4;">Define square TO BE :</span>
+<span style="color: #6272a4;">;;; </span><span style="color: #6272a4;">make a procedure</span>
+<span style="color: #6272a4;">;;; </span><span style="color: #6272a4;">with an argument X</span>
+<span style="color: #6272a4;">;;; </span><span style="color: #6272a4;">that returns the result of multiplying X by X</span>
+</pre>
+</div>
+
+<div id="org0f06544" class="figure">
+<p><img src="file:///home/laurent/Documents/COND.png" alt="COND.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>This is the caption for the next figure link (or table)</p>
+</div>
+<div class="org-src-container">
+
+<pre  class="src src-common-lisp"><span style="color: #61bfff;">(</span>DEFINE <span style="color: #ff79c6;">(</span>ABS X<span style="color: #ff79c6;">)</span>
+  <span style="color: #ff79c6;">(</span><span style="color: #ff79c6;">COND</span> <span style="color: #50fa7b;">(</span><span style="color: #61bfff;">(</span>&lt; X <span style="color: #ff5555; font-weight: bold;">0</span><span style="color: #61bfff;">)</span> <span style="color: #61bfff;">(</span>-X<span style="color: #61bfff;">)</span><span style="color: #50fa7b;">)</span>
+        <span style="color: #50fa7b;">(</span><span style="color: #61bfff;">(</span>= X <span style="color: #ff5555; font-weight: bold;">0</span><span style="color: #61bfff;">)</span> <span style="color: #61bfff;">(</span><span style="color: #ff5555; font-weight: bold;">0</span><span style="color: #61bfff;">)</span><span style="color: #50fa7b;">)</span>
+        <span style="color: #50fa7b;">(</span><span style="color: #61bfff;">(</span>&gt; X <span style="color: #ff5555; font-weight: bold;">0</span><span style="color: #61bfff;">)</span> <span style="color: #61bfff;">(</span>X<span style="color: #61bfff;">)</span><span style="color: #50fa7b;">)</span> <span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+
+
+</pre>
+</div>
+<p>
+Another way to write that case analysis:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-common-lisp"><span style="color: #61bfff;">(</span>DEFINE <span style="color: #ff79c6;">(</span>ABS X<span style="color: #ff79c6;">)</span>
+  <span style="color: #ff79c6;">(</span><span style="color: #ff79c6;">IF</span> <span style="color: #50fa7b;">(</span>&lt; X <span style="color: #ff5555; font-weight: bold;">0</span><span style="color: #50fa7b;">)</span>
+     <span style="color: #50fa7b;">(</span>-X<span style="color: #50fa7b;">)</span>
+  X<span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+
+</pre>
+</div>
+</section>
+<section id="slide-17-2-4">
+<h4 id="17-2-4"><span class="section-number-4">17.2.4</span> Recap of lesson 1</h4>
+<p>
+Note that we have now all we need to write any program.
+</p>
+
+<div id="org1796ed0" class="figure">
+<p><img src="file:///home/laurent/Documents/Lecture01table.png" alt="Lecture01table.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>What we have learnt until now</p>
+</div>
+<hr />
+</section>
+<section id="slide-17-2-5">
+<h4 id="17-2-5"><span class="section-number-4">17.2.5</span> Evaluating combos with the rule of substitution</h4>
+<p>
+How do combinations get evaluated? Let&rsquo;s look at the rule of substitution:
+</p>
+<blockquote>
+<p>
+To evaluate an application:
+-Evaluate the operator in order to get the procedure
+-Evaluate the operands to get arguments
+-Apply the procedure to the arguments:
+    -copy the body of the procedure, substituting the arguments so that they take the place of the formal arguments in the procedure
+    -evaluate the resulting new body
+</p>
+</blockquote>
+<p>
+So right now and for the next lessons let&rsquo;s religiously believe that the computer works as follow:
+</p>
+
+<div id="org02a165b" class="figure">
+<p><img src="file:///home/laurent/Documents/religiously.png" alt="religiously.png" />
+</p>
+<p><span class="figure-number">Figure 4: </span>That&rsquo;s how the computer reduces your combinations</p>
+</div>
+
+<p>
+So the reduction above is good enough for now, let&rsquo;s move on.
+</p>
+</section>
+<section id="slide-17-2-6">
+<h4 id="17-2-6"><span class="section-number-4">17.2.6</span> Evaluating conditional expression</h4>
+<p>
+Explaining IF and conditionals in general.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-common-lisp"><span style="color: #61bfff;">(</span><span style="color: #ff79c6;">IF</span> &lt;predicate&gt; <span style="color: #6272a4;">;;; </span><span style="color: #6272a4;">the thing that evaluates to true or false</span>
+    &lt;consequent&gt;
+    &lt;alternative<span style="color: #61bfff;">)</span>
+</pre>
+</div>
+
+<ol class="org-ol">
+<li><a id="17-2-6-1"></a>Should you really remember the terms Predicate, Consequent, Alternative?<br />
+<p>
+Yes. Just like in sorcery: when you know the name of a spirit you have power over it!
+So PCA!
+</p>
+
+
+<div id="org3a38af2" class="figure">
+<p><img src="file:///home/laurent/Documents/IFexpression.png" alt="IFexpression.png" />
+</p>
+<p><span class="figure-number">Figure 5: </span>Rule to evaluate and IF expression</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="17-2-6-1-1"></a>Skeleton of sicp.pdf<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-1"></a>Link on page 2: <a href="http://mitpress.mit.edu/sicp/">mitpress.mit.edu</a><br /></li>
+
+<li><a id="17-2-6-1-1-2"></a>Link on page 2: <a href="http://creativecommons.org/licenses/by-sa/4.0/">  .</a><br /></li>
+
+<li><a id="17-2-6-1-1-3"></a>Link on page 2: <a href="http://sicpebook.wordpress.com">2.andresraba5.6</a><br /></li>
+
+<li><a id="17-2-6-1-1-4"></a>Link on page 2: <a href="http://www.neilvandyke.org/sicp-texi/">2.neilvandyke4</a><br /></li>
+
+<li><a id="17-2-6-1-1-5"></a>Unofficial Texinfo Format<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-5-1"></a>Link on page 10: <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/"> </a><br /></li>
+
+<li><a id="17-2-6-1-1-5-2"></a>Link on page 10: <a href="http://groups.csail.mit.edu/mac/classes/6.001/abelson-sussman-lectures/"> </a><br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-6"></a>Dedication<br /></li>
+
+<li><a id="17-2-6-1-1-7"></a>Foreword<br /></li>
+
+<li><a id="17-2-6-1-1-8"></a>Preface to the Second Edition<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-8-1"></a>Link on page 20: <a href="http://mitpress.mit.edu/sicp">hp://mitpress.mit.edu/sicp</a><br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-9"></a>Preface to the First Edition<br /></li>
+
+<li><a id="17-2-6-1-1-10"></a>Acknowledgments<br /></li>
+
+<li><a id="17-2-6-1-1-11"></a>Building Abstractions with Procedures<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-11-1"></a>The Elements of Programming<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-11-1-1"></a>Expressions<br /></li>
+
+<li><a id="17-2-6-1-1-11-1-2"></a>Naming and the Environment<br /></li>
+
+<li><a id="17-2-6-1-1-11-1-3"></a>Evaluating Combinations<br /></li>
+
+<li><a id="17-2-6-1-1-11-1-4"></a>Compound Procedures<br /></li>
+
+<li><a id="17-2-6-1-1-11-1-5"></a>The Substitution Model for Procedure Application<br /></li>
+
+<li><a id="17-2-6-1-1-11-1-6"></a>Conditional Expressions and Predicates<br /></li>
+
+<li><a id="17-2-6-1-1-11-1-7"></a>Example: Square Roots by Newton&rsquo;s Method<br /></li>
+
+<li><a id="17-2-6-1-1-11-1-8"></a>Procedures as Black-Box Abstractions<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-11-2"></a>Procedures and the Processes They Generate<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-11-2-1"></a>Linear Recursion and Iteration<br /></li>
+
+<li><a id="17-2-6-1-1-11-2-2"></a>Tree Recursion<br /></li>
+
+<li><a id="17-2-6-1-1-11-2-3"></a>Orders of Growth<br /></li>
+
+<li><a id="17-2-6-1-1-11-2-4"></a>Exponentiation<br /></li>
+
+<li><a id="17-2-6-1-1-11-2-5"></a>Greatest Common Divisors<br /></li>
+
+<li><a id="17-2-6-1-1-11-2-6"></a>Example: Testing for Primality<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-11-3"></a>Formulating Abstractions with Higher-Order Procedures<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-11-3-1"></a>Procedures as Arguments<br /></li>
+
+<li><a id="17-2-6-1-1-11-3-2"></a>Constructing Procedures Using lambda<br /></li>
+
+<li><a id="17-2-6-1-1-11-3-3"></a>Procedures as General Methods<br /></li>
+
+<li><a id="17-2-6-1-1-11-3-4"></a>Procedures as Returned Values<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-12"></a>Building Abstractions with Data<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-12-1"></a>Introduction to Data Abstraction<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-12-1-1"></a>Example: Arithmetic Operations for Rational Numbers<br /></li>
+
+<li><a id="17-2-6-1-1-12-1-2"></a>Abstraction Barriers<br /></li>
+
+<li><a id="17-2-6-1-1-12-1-3"></a>What Is Meant by Data?<br /></li>
+
+<li><a id="17-2-6-1-1-12-1-4"></a>Extended Exercise: Interval Arithmetic<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-12-2"></a>Hierarchical Data and the Closure Property<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-12-2-1"></a>Representing Sequences<br /></li>
+
+<li><a id="17-2-6-1-1-12-2-2"></a>Hierarchical Structures<br /></li>
+
+<li><a id="17-2-6-1-1-12-2-3"></a>Sequences as Conventional Interfaces<br /></li>
+
+<li><a id="17-2-6-1-1-12-2-4"></a>Example: A Picture Language<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-12-3"></a>Symbolic Data<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-12-3-1"></a>Quotation<br /></li>
+
+<li><a id="17-2-6-1-1-12-3-2"></a>Example: Symbolic Differentiation<br /></li>
+
+<li><a id="17-2-6-1-1-12-3-3"></a>Example: Representing Sets<br /></li>
+
+<li><a id="17-2-6-1-1-12-3-4"></a>Example: Huffman Encoding Trees<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-12-4"></a>Multiple Representations for Abstract Data<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-12-4-1"></a>Representations for Complex Numbers<br /></li>
+
+<li><a id="17-2-6-1-1-12-4-2"></a>Tagged data<br /></li>
+
+<li><a id="17-2-6-1-1-12-4-3"></a>Data-Directed Programming and Additivity<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-12-5"></a>Systems with Generic Operations<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-12-5-1"></a>Generic Arithmetic Operations<br /></li>
+
+<li><a id="17-2-6-1-1-12-5-2"></a>Combining Data of Different Types<br /></li>
+
+<li><a id="17-2-6-1-1-12-5-3"></a>Example: Symbolic Algebra<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-13"></a>Modularity, Objects, and State<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-13-1"></a>Assignment and Local State<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-13-1-1"></a>Local State Variables<br /></li>
+
+<li><a id="17-2-6-1-1-13-1-2"></a>The Benefits of Introducing Assignment<br /></li>
+
+<li><a id="17-2-6-1-1-13-1-3"></a>The Costs of Introducing Assignment<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-13-2"></a>The Environment Model of Evaluation<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-13-2-1"></a>The Rules for Evaluation<br /></li>
+
+<li><a id="17-2-6-1-1-13-2-2"></a>Applying Simple Procedures<br /></li>
+
+<li><a id="17-2-6-1-1-13-2-3"></a>Frames as the Repository of Local State<br /></li>
+
+<li><a id="17-2-6-1-1-13-2-4"></a>Internal Definitions<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-13-3"></a>Modeling with Mutable Data<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-13-3-1"></a>Mutable List Structure<br /></li>
+
+<li><a id="17-2-6-1-1-13-3-2"></a>Representing Queues<br /></li>
+
+<li><a id="17-2-6-1-1-13-3-3"></a>Representing Tables<br /></li>
+
+<li><a id="17-2-6-1-1-13-3-4"></a>A Simulator for Digital Circuits<br /></li>
+
+<li><a id="17-2-6-1-1-13-3-5"></a>Propagation of Constraints<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-13-4"></a>Concurrency: Time Is of the Essence<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-13-4-1"></a>The Nature of Time in Concurrent Systems<br /></li>
+
+<li><a id="17-2-6-1-1-13-4-2"></a>Mechanisms for Controlling Concurrency<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-13-5"></a>Streams<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-13-5-1"></a>Streams Are Delayed Lists<br /></li>
+
+<li><a id="17-2-6-1-1-13-5-2"></a>Infinite Streams<br /></li>
+
+<li><a id="17-2-6-1-1-13-5-3"></a>Exploiting the Stream Paradigm<br /></li>
+
+<li><a id="17-2-6-1-1-13-5-4"></a>Streams and Delayed Evaluation<br /></li>
+
+<li><a id="17-2-6-1-1-13-5-5"></a>Modularity of Functional Programs and Modularity of Objects<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-14"></a>Metalinguistic Abstraction<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-14-1"></a>The Metacircular Evaluator<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-14-1-1"></a>The Core of the Evaluator<br /></li>
+
+<li><a id="17-2-6-1-1-14-1-2"></a>Representing Expressions<br /></li>
+
+<li><a id="17-2-6-1-1-14-1-3"></a>Evaluator Data Structures<br /></li>
+
+<li><a id="17-2-6-1-1-14-1-4"></a>Running the Evaluator as a Program<br /></li>
+
+<li><a id="17-2-6-1-1-14-1-5"></a>Data as Programs<br /></li>
+
+<li><a id="17-2-6-1-1-14-1-6"></a>Internal Definitions<br /></li>
+
+<li><a id="17-2-6-1-1-14-1-7"></a>Separating Syntactic Analysis from Execution<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-14-2"></a>Variations on a Scheme — Lazy Evaluation<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-14-2-1"></a>Normal Order and Applicative Order<br /></li>
+
+<li><a id="17-2-6-1-1-14-2-2"></a>An Interpreter with Lazy Evaluation<br /></li>
+
+<li><a id="17-2-6-1-1-14-2-3"></a>Streams as Lazy Lists<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-14-3"></a>Variations on a Scheme — Nondeterministic Computing<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-14-3-1"></a>Amb and Search<br /></li>
+
+<li><a id="17-2-6-1-1-14-3-2"></a>Examples of Nondeterministic Programs<br /></li>
+
+<li><a id="17-2-6-1-1-14-3-3"></a>Implementing the amb Evaluator<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-14-4"></a>Logic Programming<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-14-4-1"></a>Deductive Information Retrieval<br /></li>
+
+<li><a id="17-2-6-1-1-14-4-2"></a>How the Query System Works<br /></li>
+
+<li><a id="17-2-6-1-1-14-4-3"></a>Is Logic Programming Mathematical Logic?<br /></li>
+
+<li><a id="17-2-6-1-1-14-4-4"></a>Implementing the Query System<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-14-4-4-1"></a>The Driver Loop and Instantiation<br /></li>
+
+<li><a id="17-2-6-1-1-14-4-4-2"></a>The Evaluator<br /></li>
+
+<li><a id="17-2-6-1-1-14-4-4-3"></a>Finding Assertions by Pattern Matching<br /></li>
+
+<li><a id="17-2-6-1-1-14-4-4-4"></a>Rules and Unification<br /></li>
+
+<li><a id="17-2-6-1-1-14-4-4-5"></a>Maintaining the Data Base<br /></li>
+
+<li><a id="17-2-6-1-1-14-4-4-6"></a>Stream Operations<br /></li>
+
+<li><a id="17-2-6-1-1-14-4-4-7"></a>Query Syntax Procedures<br /></li>
+
+<li><a id="17-2-6-1-1-14-4-4-8"></a>Frames and Bindings<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-15"></a>Computing with Register Machines<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-15-1"></a>Designing Register Machines<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-15-1-1"></a>A Language for Describing Register Machines<br /></li>
+
+<li><a id="17-2-6-1-1-15-1-2"></a>Abstraction in Machine Design<br /></li>
+
+<li><a id="17-2-6-1-1-15-1-3"></a>Subroutines<br /></li>
+
+<li><a id="17-2-6-1-1-15-1-4"></a>Using a Stack to Implement Recursion<br /></li>
+
+<li><a id="17-2-6-1-1-15-1-5"></a>Instruction Summary<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-15-2"></a>A Register-Machine Simulator<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-15-2-1"></a>The Machine Model<br /></li>
+
+<li><a id="17-2-6-1-1-15-2-2"></a>The Assembler<br /></li>
+
+<li><a id="17-2-6-1-1-15-2-3"></a>Generating Execution Procedures for Instructions<br /></li>
+
+<li><a id="17-2-6-1-1-15-2-4"></a>Monitoring Machine Performance<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-15-3"></a>Storage Allocation and Garbage Collection<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-15-3-1"></a>Memory as Vectors<br /></li>
+
+<li><a id="17-2-6-1-1-15-3-2"></a>Maintaining the Illusion of Infinite Memory<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-15-4"></a>The Explicit-Control Evaluator<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-15-4-1"></a>The Core of the Explicit-Control Evaluator<br /></li>
+
+<li><a id="17-2-6-1-1-15-4-2"></a>Sequence Evaluation and Tail Recursion<br /></li>
+
+<li><a id="17-2-6-1-1-15-4-3"></a>Conditionals, Assignments, and Definitions<br /></li>
+
+<li><a id="17-2-6-1-1-15-4-4"></a>Running the Evaluator<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-15-5"></a>Compilation<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-15-5-1"></a>Structure of the Compiler<br /></li>
+
+<li><a id="17-2-6-1-1-15-5-2"></a>Compiling Expressions<br /></li>
+
+<li><a id="17-2-6-1-1-15-5-3"></a>Compiling Combinations<br /></li>
+
+<li><a id="17-2-6-1-1-15-5-4"></a>Combining Instruction Sequences<br /></li>
+
+<li><a id="17-2-6-1-1-15-5-5"></a>An Example of Compiled Code<br /></li>
+
+<li><a id="17-2-6-1-1-15-5-6"></a>Lexical Addressing<br /></li>
+
+<li><a id="17-2-6-1-1-15-5-7"></a>Interfacing Compiled Code to the Evaluator<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-16"></a>References<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-16-1"></a>Link on page 862: <a href="http://www.hpl.hp.com/techreports/94/HPL-94-30.html">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-2"></a>Link on page 862: <a href="https://www.cs.princeton.edu/~appel/papers/45.ps">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-3"></a>Link on page 862: <a href="http://worrydream.com/refs/Backus-CanProgrammingBeLiberated.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-4"></a>Link on page 862: <a href="http://dspace.mit.edu/handle/1721.1/41976">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-5"></a>Link on page 862: <a href="http://ijcai.org/Past%20Proceedings/IJCAI-77-VOL1/PDF/085.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-6"></a>Link on page 863: <a href="https://www.cs.auckland.ac.nz/~chaitin/sciamer.html">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-7"></a>Link on page 863: <a href="http://www.doc.ic.ac.uk/~klc/neg.html">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-8"></a>Link on page 863: <a href="http://mumble.net/~jar/pubs/macros_that_work.ps">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-9"></a>Link on page 863: <a href="http://alain.colmerauer.free.fr/alcol/ArchivesPublications/HommeMachineFr/HoMa.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-10"></a>Link on page 863: <a href="http://www.cs.utexas.edu/users/EWD/ewd01xx/EWD196.PDF">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-11"></a>Link on page 863: <a href="http://www.cs.utexas.edu/users/EWD/ewd01xx/EWD123.PDF">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-12"></a>Link on page 864: <a href="http://dspace.mit.edu/handle/1721.1/5750">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-13"></a>Link on page 864: <a href="http://dspace.mit.edu/handle/1721.1/5733">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-14"></a>Link on page 864: <a href="https://saltworks.stanford.edu/assets/kv359wz9060.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-15"></a>Link on page 864: <a href="http://www.iro.umontreal.ca/~feeley/papers/FeeleyMSc.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-16"></a>Link on page 864: <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.90.6978">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-17"></a>Link on page 864: <a href="https://www.cs.purdue.edu/homes/hosking/690M/p611-fenichel.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-18"></a>Link on page 864: <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.332.36">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-19"></a>Link on page 864: <a href="https://www.cs.indiana.edu/cgi-bin/techreports/TRNNN.cgi?trnum=TR44">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-20"></a>Link on page 865: <a href="http://www.dreamsongs.com/Files/WhyOfY.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-21"></a>Link on page 865: <a href="http://stephane.ducasse.free.fr/FreeBooks/BlueBook/Bluebook.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-22"></a>Link on page 865: <a href="http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.81.9820">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-23"></a>Link on page 865: <a href="http://www.kestrel.edu/home/people/green/publications/green-raphael.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-24"></a>Link on page 865: <a href="http://www.unc.edu/~stotts/comp723/guttagADT77.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-25"></a>Link on page 865: <a href="https://groups.csail.mit.edu/mac/ftpdir/users/cph/links.ps.gz">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-26"></a>Link on page 865: <a href="http://groups.csail.mit.edu/mac/ftpdir/scheme-reports/synclo.ps">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-27"></a>Link on page 865: <a href="https://archive.org/details/AnIntroductionToTheTheoryOfNumbers-4thEd-G.h.HardyE.m.Wright">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-28"></a>Link on page 866: <a href="http://www.softwarepreservation.org/projects/LISP/stanford/Hearn-StandardLisp-AIM-90.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-29"></a>Link on page 866: <a href="http://eprints.soton.ac.uk/257577/1/funcgeo2.pdf"> version –›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-30"></a>Link on page 866: <a href="http://pmh-systems.co.uk/phAcademic/papers/funcgeo.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-31"></a>Link on page 866: <a href="http://dspace.mit.edu/handle/1721.1/6171">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-32"></a>Link on page 866: <a href="http://dspace.mit.edu/handle/1721.1/6272">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-33"></a>Link on page 866: <a href="http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-34"></a>Link on page 867: <a href="http://www.ccs.neu.edu/scheme/pubs/dissertation-kohlbecker.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-35"></a>Link on page 867: <a href="http://www.doc.ic.ac.uk/~rak/papers/IFIP%2074.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-36"></a>Link on page 867: <a href="http://www.doc.ic.ac.uk/%7Erak/papers/LogicForProblemSolving.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-37"></a>Link on page 867: <a href="http://research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-38"></a>Link on page 867: <a href="http://www.bitsavers.org/pdf/xerox/parc/techReports/CSL-81-12_Report_On_The_Programming_Language_Euclid.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-39"></a>Link on page 867: <a href="http://dspace.mit.edu/handle/1721.1/6335">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-40"></a>Link on page 867: <a href="http://csg.csail.mit.edu/CSGArchives/memos/Memo-117.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-41"></a>Link on page 868: <a href="http://dspace.mit.edu/handle/1721.1/6296">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-42"></a>Link on page 868: <a href="http://dspace.mit.edu/handle/1721.1/6327">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-43"></a>Link on page 868: <a href="http://www-formal.stanford.edu/jmc/recursive.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-44"></a>Link on page 868: <a href="http://www-formal.stanford.edu/jmc/basis.html">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-45"></a>Link on page 868: <a href="http://www-formal.stanford.edu/jmc/history/lisp/lisp.html">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-46"></a>Link on page 868: <a href="http://www.softwarepreservation.org/projects/LISP/book/LISP%201.5%20Programmers%20Manual.pdf/view">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-47"></a>Link on page 868: <a href="http://dspace.mit.edu/handle/1721.1/6203">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-48"></a>Link on page 868: <a href="http://www.cs.cmu.edu/~glmiller/Publications/b2hd-Mi76.html">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-49"></a>Link on page 868: <a href="http://dspace.mit.edu/handle/1721.1/6622">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-50"></a>Link on page 868: <a href="http://www.softwarepreservation.org/projects/LISP/MIT/Moon-MACLISP_Reference_Manual-Apr_08_1974.pdf/view">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-51"></a>Link on page 868: <a href="http://www.unlambda.com/lmman/index.html">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-52"></a>Link on page 869: <a href="http://maclisp.info/pitmanual">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-53"></a>Link on page 869: <a href="http://www.catb.org/jargon/">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-54"></a>Link on page 869: <a href="http://people.csail.mit.edu/riastradh/t/adams82t.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-55"></a>Link on page 869: <a href="http://people.csail.mit.edu/jaffer/r4rs.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-56"></a>Link on page 869: <a href="http://people.csail.mit.edu/rivest/Rsapaper.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-57"></a>Link on page 869: <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.123.8503&amp;rep=rep1&amp;type=pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-58"></a>Link on page 869: <a href="http://dspace.mit.edu/handle/1721.1/5753">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-59"></a>Link on page 870: <a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/cltl2.html">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-60"></a>Link on page 870: <a href="http://dspace.mit.edu/handle/1721.1/5794">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-61"></a>Link on page 870: <a href="http://www.dourish.com/goodies/jargon.html">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-62"></a>Link on page 870: <a href="http://dspace.mit.edu/handle/1721.1/5803">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-63"></a>Link on page 870: <a href="http://dspace.mit.edu/handle/1721.1/6312">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-64"></a>Link on page 870: <a href="http://groups.csail.mit.edu/mac/users/wisdom/ss-chaos.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-65"></a>Link on page 870: <a href="http://dspace.mit.edu/handle/1721.1/6184">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-66"></a>Link on page 870: <a href="https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-574.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-67"></a>Link on page 870: <a href="http://www.softwarepreservation.org/projects/LISP/interlisp/Interlisp-Oct_1974.pdf/view">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-68"></a>Link on page 871: <a href="http://www.diku.dk/OLD/undervisning/2005e/224/papers/Wand80.pdf">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-69"></a>Link on page 871: <a href="http://dspace.mit.edu/handle/1721.1/7095">–›</a><br /></li>
+
+<li><a id="17-2-6-1-1-16-70"></a>Link on page 871: <a href="http://www.aaai.org/Papers/AAAI/1987/AAAI87-011.pdf">–›</a><br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-1-1-17"></a>List of Exercises<br /></li>
+
+<li><a id="17-2-6-1-1-18"></a>List of Figures<br /></li>
+
+<li><a id="17-2-6-1-1-19"></a>Index<br /></li>
+
+<li><a id="17-2-6-1-1-20"></a>Colophon<br />
+<ol class="org-ol">
+<li><a id="17-2-6-1-1-20-1"></a>Link on page 883: <a href="http://newgottland.com/2012/02/09/before-the-ereader-there-was-the-wheelreader/ramelli_bookwheel_1032px/">New Goland</a><br /></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+
+
+
+<li><a id="17-2-6-2"></a>Notes on sicp-pocket.pdf<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1"></a>Skeleton<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-1"></a>Link on page 2: <a href="http://mitpress.mit.edu/sicp/">mitpress.mit.edu</a><br /></li>
+
+<li><a id="17-2-6-2-1-2"></a>Link on page 2: <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a><br /></li>
+
+<li><a id="17-2-6-2-1-3"></a>Link on page 2: <a href="http://sicpebook.wordpress.com">2.andresraba4</a><br /></li>
+
+<li><a id="17-2-6-2-1-4"></a>Link on page 2: <a href="http://www.neilvandyke.org/sicp-texi/">2.neilvandyke4</a><br /></li>
+
+<li><a id="17-2-6-2-1-5"></a>Unofficial Texinfo Format<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-5-1"></a>Link on page 13: <a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/">MIT OCW</a><br /></li>
+
+<li><a id="17-2-6-2-1-5-2"></a>Link on page 13: <a href="http://groups.csail.mit.edu/mac/classes/6.001/abelson-sussman-lectures/">MIT CSAIL</a><br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-6"></a>Dedication<br /></li>
+
+<li><a id="17-2-6-2-1-7"></a>Foreword<br /></li>
+
+<li><a id="17-2-6-2-1-8"></a>Preface to the Second Edition<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-8-1"></a>Link on page 24: <a href="http://mitpress.mit.edu/sicp">http://mitpress.mit.edu</a><br /></li>
+
+<li><a id="17-2-6-2-1-8-2"></a>Link on page 24: <a href="http://mitpress.mit.edu/sicp">/sicp</a><br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-9"></a>Preface to the First Edition<br /></li>
+
+<li><a id="17-2-6-2-1-10"></a>Acknowledgements<br /></li>
+
+<li><a id="17-2-6-2-1-11"></a>Building Abstractions with Procedures<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-11-1"></a>The Elements of Programming<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-11-1-1"></a>Expressions<br /></li>
+
+<li><a id="17-2-6-2-1-11-1-2"></a>Naming and the Environment<br /></li>
+
+<li><a id="17-2-6-2-1-11-1-3"></a>Evaluating Combinations<br /></li>
+
+<li><a id="17-2-6-2-1-11-1-4"></a>Compound Procedures<br /></li>
+
+<li><a id="17-2-6-2-1-11-1-5"></a>The Substitution Model for Procedure Application<br /></li>
+
+<li><a id="17-2-6-2-1-11-1-6"></a>Conditional Expressions and Predicates<br /></li>
+
+<li><a id="17-2-6-2-1-11-1-7"></a>Example: Square Roots by Newton&rsquo;s Method<br /></li>
+
+<li><a id="17-2-6-2-1-11-1-8"></a>Procedures as Black-Box Abstractions<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-11-2"></a>Procedures and the Processes They Generate<br />
+<p>
+the procedure definition binds its formal parameters.
+In a procedure definition, the bound variables de-clared as the formal parameters of the procedure have thebody of the procedure as their scope.
+</p>
+
+<p>
+Knowing the rules is not enough, we should know the consequences of our procedure on the processes they trigger:
+To become experts, we mustlearn to visualize the processes generated by various typesof procedures
+</p>
+
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-11-2-1"></a>Linear Recursion and Iteration<br /></li>
+
+<li><a id="17-2-6-2-1-11-2-2"></a>Tree Recursion<br /></li>
+
+<li><a id="17-2-6-2-1-11-2-3"></a>Orders of Growth<br /></li>
+
+<li><a id="17-2-6-2-1-11-2-4"></a>Exponentiation<br /></li>
+
+<li><a id="17-2-6-2-1-11-2-5"></a>Greatest Common Divisors<br /></li>
+
+<li><a id="17-2-6-2-1-11-2-6"></a>Example: Testing for Primality<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-11-3"></a>Formulating Abstractions with Higher-Order Procedures<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-11-3-1"></a>Procedures as Arguments<br /></li>
+
+<li><a id="17-2-6-2-1-11-3-2"></a>Constructing Procedures Using Lambda<br />
+<p>
+This construct is so useful that there is a special form called
+let to make its use more convenient. Using let , the f pro-
+cedure could be written as:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-common-lisp"><span style="color: #61bfff;">(</span>define <span style="color: #ff79c6;">(</span>f x y<span style="color: #ff79c6;">)</span>
+<span style="color: #ff79c6;">(</span><span style="color: #ff79c6;">let</span> <span style="color: #50fa7b;">(</span><span style="color: #61bfff;">(</span>a <span style="color: #ff79c6;">(</span>+ <span style="color: #ff5555; font-weight: bold;">1</span> <span style="color: #50fa7b;">(</span>* x y<span style="color: #50fa7b;">)</span><span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+<span style="color: #61bfff;">(</span>b <span style="color: #ff79c6;">(</span>- <span style="color: #ff5555; font-weight: bold;">1</span> y<span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span><span style="color: #50fa7b;">)</span>
+<span style="color: #50fa7b;">(</span>+ <span style="color: #61bfff;">(</span>* x <span style="color: #ff79c6;">(</span>square a<span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+<span style="color: #61bfff;">(</span>* y b<span style="color: #61bfff;">)</span>
+<span style="color: #61bfff;">(</span>* a b<span style="color: #61bfff;">)</span><span style="color: #50fa7b;">)</span><span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>
+<span style="color: #6272a4;">;;;</span><span style="color: #6272a4;">The general form of a let expression is</span>
+<span style="color: #61bfff;">(</span><span style="color: #ff79c6;">let</span> <span style="color: #ff79c6;">(</span><span style="color: #50fa7b;">(</span> <span style="color: #61bfff;">&#9001;</span>v ar <span style="color: #ff5555; font-weight: bold;">1</span> <span style="color: #61bfff;">&#9002;</span> <span style="color: #61bfff;">&#9001;</span>exp <span style="color: #ff5555; font-weight: bold;">1</span> <span style="color: #61bfff;">&#9002;</span> <span style="color: #50fa7b;">)</span>
+<span style="color: #50fa7b;">(</span> <span style="color: #61bfff;">&#9001;</span>v ar <span style="color: #ff5555; font-weight: bold;">2</span> <span style="color: #61bfff;">&#9002;</span> <span style="color: #61bfff;">&#9001;</span>exp <span style="color: #ff5555; font-weight: bold;">2</span> <span style="color: #61bfff;">&#9002;</span> <span style="color: #50fa7b;">)</span>
+...
+<span style="color: #50fa7b;">(</span> <span style="color: #61bfff;">&#9001;</span>v ar n <span style="color: #61bfff;">&#9002;</span> <span style="color: #61bfff;">&#9001;</span>exp n <span style="color: #61bfff;">&#9002;</span> <span style="color: #50fa7b;">)</span><span style="color: #ff79c6;">)</span>
+<span style="color: #ff79c6;">&#9001;</span> body <span style="color: #ff79c6;">&#9002;</span> <span style="color: #61bfff;">)</span>
+<span style="color: #6272a4;">;;;</span><span style="color: #6272a4;">which can be thought of as saying</span>
+<span style="color: #6272a4;">;;;</span><span style="color: #6272a4;">let &#9001;v ar 1 &#9002; have the value &#9001;exp 1 &#9002; and</span>
+<span style="color: #6272a4;">;;;</span><span style="color: #6272a4;">&#9001;v ar 2 &#9002; have the value &#9001;exp 2 &#9002; and</span>
+<span style="color: #6272a4;">;;;</span><span style="color: #6272a4;">...</span>
+<span style="color: #6272a4;">;;;</span><span style="color: #6272a4;">in</span>
+<span style="color: #6272a4;">;;;</span><span style="color: #6272a4;">&#9001;v ar n &#9002; have the value &#9001;exp n &#9002;</span>
+<span style="color: #6272a4;">;;;</span><span style="color: #6272a4;">&#9001; body &#9002;</span>
+</pre>
+</div>
+</li>
+<li><a id="17-2-6-2-1-11-3-3"></a>Procedures as General Methods<br /></li>
+
+<li><a id="17-2-6-2-1-11-3-4"></a>Procedures as Returned Values<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-12"></a>Building Abstractions with Data<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-12-1"></a>Introduction to Data Abstraction<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-12-1-1"></a>Example: Arithmetic Operations for Rational Numbers<br /></li>
+
+<li><a id="17-2-6-2-1-12-1-2"></a>Abstraction Barriers<br /></li>
+
+<li><a id="17-2-6-2-1-12-1-3"></a>What Is Meant by Data?<br /></li>
+
+<li><a id="17-2-6-2-1-12-1-4"></a>Extended Exercise: Interval Arithmetic<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-12-2"></a>Hierarchical Data and the Closure Property<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-12-2-1"></a>Representing Sequences<br /></li>
+
+<li><a id="17-2-6-2-1-12-2-2"></a>Hierarchical Structures<br /></li>
+
+<li><a id="17-2-6-2-1-12-2-3"></a>Sequences as Conventional Interfaces<br /></li>
+
+<li><a id="17-2-6-2-1-12-2-4"></a>Example: A Picture Language<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-12-3"></a>Symbolic Data<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-12-3-1"></a>Quotation<br /></li>
+
+<li><a id="17-2-6-2-1-12-3-2"></a>Example: Symbolic Differentiation<br /></li>
+
+<li><a id="17-2-6-2-1-12-3-3"></a>Example: Representing Sets<br /></li>
+
+<li><a id="17-2-6-2-1-12-3-4"></a>Example: Huffman Encoding Trees<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-12-4"></a>Multiple Representations for Abstract Data<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-12-4-1"></a>Representations for Complex Numbers<br /></li>
+
+<li><a id="17-2-6-2-1-12-4-2"></a>Tagged data<br /></li>
+
+<li><a id="17-2-6-2-1-12-4-3"></a>Data-Directed Programming and Additivity<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-12-5"></a>Systems with Generic Operations<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-12-5-1"></a>Generic Arithmetic Operations<br /></li>
+
+<li><a id="17-2-6-2-1-12-5-2"></a>Combining Data of Different Types<br /></li>
+
+<li><a id="17-2-6-2-1-12-5-3"></a>Example: Symbolic Algebra<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-13"></a>Modularity, Objects, and State<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-13-1"></a>Assignment and Local State<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-13-1-1"></a>Local State Variables<br /></li>
+
+<li><a id="17-2-6-2-1-13-1-2"></a>The Benefits of Introducing Assignment<br /></li>
+
+<li><a id="17-2-6-2-1-13-1-3"></a>The Costs of Introducing Assignment<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-13-2"></a>The Environment Model of Evaluation<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-13-2-1"></a>The Rules for Evaluation<br /></li>
+
+<li><a id="17-2-6-2-1-13-2-2"></a>Applying Simple Procedures<br /></li>
+
+<li><a id="17-2-6-2-1-13-2-3"></a>Frames as the Repository of Local State<br /></li>
+
+<li><a id="17-2-6-2-1-13-2-4"></a>Internal Definitions<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-13-3"></a>Modeling with Mutable Data<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-13-3-1"></a>Mutable List Structure<br /></li>
+
+<li><a id="17-2-6-2-1-13-3-2"></a>Representing Queues<br /></li>
+
+<li><a id="17-2-6-2-1-13-3-3"></a>Representing Tables<br /></li>
+
+<li><a id="17-2-6-2-1-13-3-4"></a>A Simulator for Digital Circuits<br /></li>
+
+<li><a id="17-2-6-2-1-13-3-5"></a>Propagation of Constraints<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-13-4"></a>Concurrency: Time Is of the Essence<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-13-4-1"></a>The Nature of Time in Concurrent Systems<br /></li>
+
+<li><a id="17-2-6-2-1-13-4-2"></a>Mechanisms for Controlling Concurrency<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-13-5"></a>Streams<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-13-5-1"></a>Streams Are Delayed Lists<br /></li>
+
+<li><a id="17-2-6-2-1-13-5-2"></a>Infinite Streams<br /></li>
+
+<li><a id="17-2-6-2-1-13-5-3"></a>Exploiting the Stream Paradigm<br /></li>
+
+<li><a id="17-2-6-2-1-13-5-4"></a>Streams and Delayed Evaluation<br /></li>
+
+<li><a id="17-2-6-2-1-13-5-5"></a>Modularity of Functional Programs and Modularity of Objects<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-14"></a>Metalinguistic Abstraction<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-14-1"></a>The Metacircular Evaluator<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-14-1-1"></a>The Core of the Evaluator<br /></li>
+
+<li><a id="17-2-6-2-1-14-1-2"></a>Representing Expressions<br /></li>
+
+<li><a id="17-2-6-2-1-14-1-3"></a>Evaluator Data Structures<br /></li>
+
+<li><a id="17-2-6-2-1-14-1-4"></a>Running the Evaluator as a Program<br /></li>
+
+<li><a id="17-2-6-2-1-14-1-5"></a>Data as Programs<br /></li>
+
+<li><a id="17-2-6-2-1-14-1-6"></a>Internal Definitions<br /></li>
+
+<li><a id="17-2-6-2-1-14-1-7"></a>Separating Syntactic Analysis from Execution<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-14-2"></a>Variations on a Scheme &#x2014; Lazy Evaluation<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-14-2-1"></a>Normal Order and Applicative Order<br /></li>
+
+<li><a id="17-2-6-2-1-14-2-2"></a>An Interpreter with Lazy Evaluation<br /></li>
+
+<li><a id="17-2-6-2-1-14-2-3"></a>Streams as Lazy Lists<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-14-3"></a>Variations on a Scheme &#x2014; Nondeterministic Computing<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-14-3-1"></a>Amb and Search<br /></li>
+
+<li><a id="17-2-6-2-1-14-3-2"></a>Examples of Nondeterministic Programs<br /></li>
+
+<li><a id="17-2-6-2-1-14-3-3"></a>Implementing the Amb Evaluator<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-14-4"></a>Logic Programming<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-14-4-1"></a>Deductive Information Retrieval<br /></li>
+
+<li><a id="17-2-6-2-1-14-4-2"></a>How the Query System Works<br /></li>
+
+<li><a id="17-2-6-2-1-14-4-3"></a>Is Logic Programming Mathematical Logic?<br /></li>
+
+<li><a id="17-2-6-2-1-14-4-4"></a>Implementing the Query System<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-14-4-4-1"></a>The Driver Loop and Instantiation<br /></li>
+
+<li><a id="17-2-6-2-1-14-4-4-2"></a>The Evaluator<br /></li>
+
+<li><a id="17-2-6-2-1-14-4-4-3"></a>Finding Assertions by Pattern Matching<br /></li>
+
+<li><a id="17-2-6-2-1-14-4-4-4"></a>Rules and Unification<br /></li>
+
+<li><a id="17-2-6-2-1-14-4-4-5"></a>Maintaining the Data Base<br /></li>
+
+<li><a id="17-2-6-2-1-14-4-4-6"></a>Stream Operations<br /></li>
+
+<li><a id="17-2-6-2-1-14-4-4-7"></a>Query Syntax Procedures<br /></li>
+
+<li><a id="17-2-6-2-1-14-4-4-8"></a>Frames and Bindings<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-15"></a>Computing with Register Machines<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-15-1"></a>Designing Register Machines<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-15-1-1"></a>A Language for Describing Register Machines<br /></li>
+
+<li><a id="17-2-6-2-1-15-1-2"></a>Abstraction in Machine Design<br /></li>
+
+<li><a id="17-2-6-2-1-15-1-3"></a>Subroutines<br /></li>
+
+<li><a id="17-2-6-2-1-15-1-4"></a>Using a Stack to Implement Recursion<br /></li>
+
+<li><a id="17-2-6-2-1-15-1-5"></a>Instruction Summary<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-15-2"></a>A Register-Machine Simulator<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-15-2-1"></a>The Machine Model<br /></li>
+
+<li><a id="17-2-6-2-1-15-2-2"></a>The Assembler<br /></li>
+
+<li><a id="17-2-6-2-1-15-2-3"></a>Generating Execution Procedures for Instructions<br /></li>
+
+<li><a id="17-2-6-2-1-15-2-4"></a>Monitoring Machine Performance<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-15-3"></a>Storage Allocation and Garbage Collection<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-15-3-1"></a>Memory as Vectors<br /></li>
+
+<li><a id="17-2-6-2-1-15-3-2"></a>Maintaining the Illusion of Infinite Memory<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-15-4"></a>The Explicit-Control Evaluator<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-15-4-1"></a>The Core of the Explicit-Control Evaluator<br /></li>
+
+<li><a id="17-2-6-2-1-15-4-2"></a>Sequence Evaluation and Tail Recursion<br /></li>
+
+<li><a id="17-2-6-2-1-15-4-3"></a>Conditionals, Assignments, and Definitions<br /></li>
+
+<li><a id="17-2-6-2-1-15-4-4"></a>Running the Evaluator<br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-15-5"></a>Compilation<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-15-5-1"></a>Structure of the Compiler<br /></li>
+
+<li><a id="17-2-6-2-1-15-5-2"></a>Compiling Expressions<br /></li>
+
+<li><a id="17-2-6-2-1-15-5-3"></a>Compiling Combinations<br /></li>
+
+<li><a id="17-2-6-2-1-15-5-4"></a>Combining Instruction Sequences<br /></li>
+
+<li><a id="17-2-6-2-1-15-5-5"></a>An Example of Compiled Code<br /></li>
+
+<li><a id="17-2-6-2-1-15-5-6"></a>Lexical Addressing<br /></li>
+
+<li><a id="17-2-6-2-1-15-5-7"></a>Interfacing Compiled Code to the Evaluator<br /></li>
+</ol>
+</li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-16"></a>References<br />
+<ol class="org-ol">
+<li><a id="17-2-6-2-1-16-1"></a>Link on page 1108: <a href="http://www.hpl.hp.com/techreports/94/HPL-94-30.html">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-2"></a>Link on page 1108: <a href="http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.39.8219">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-3"></a>Link on page 1108: <a href="http://www.stanford.edu/class/cs242/readings/backus.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-4"></a>Link on page 1108: <a href="http://dspace.mit.edu/handle/1721.1/41976">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-5"></a>Link on page 1109: <a href="http://ijcai.org/Past%20Proceedings/IJCAI-77-VOL1/PDF/085.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-6"></a>Link on page 1109: <a href="http://www.doc.ic.ac.uk/~klc/neg.html">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-7"></a>Link on page 1109: <a href="http://mumble.net/~jar/pubs/macros_that_work.ps">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-8"></a>Link on page 1110: <a href="http://www.cs.utexas.edu/users/EWD/ewd01xx/EWD196.PDF">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-9"></a>Link on page 1110: <a href="http://www.cs.utexas.edu/users/EWD/ewd01xx/EWD123.PDF">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-10"></a>Link on page 1110: <a href="http://dspace.mit.edu/handle/1721.1/5750">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-11"></a>Link on page 1110: <a href="http://dspace.mit.edu/handle/1721.1/5733">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-12"></a>Link on page 1111: <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.90.6978">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-13"></a>Link on page 1111: <a href="https://www.cs.indiana.edu/cgi-bin/techreports/TRNNN.cgi?trnum=TR44">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-14"></a>Link on page 1111: <a href="http://www.dreamsongs.com/Files/WhyOfY.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-15"></a>Link on page 1112: <a href="http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.81.9820">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-16"></a>Link on page 1112: <a href="http://www-sst.informatik.tu-cottbus.de/~db/doc/People/Broy/Software-Pioneers/Guttag_hist.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-17"></a>Link on page 1112: <a href="ftp://ftp.cs.indiana.edu/pub/scheme-repository/doc/prop/synclo.ps.gz">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-18"></a>Link on page 1113: <a href="http://users.ecs.soton.ac.uk/ph/papers/funcgeo2.pdf">(2002</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-19"></a>Link on page 1113: <a href="http://users.ecs.soton.ac.uk/ph/funcgeo.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-20"></a>Link on page 1113: <a href="http://users.ecs.soton.ac.uk/ph/papers/funcgeo2.pdf">version)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-21"></a>Link on page 1113: <a href="http://dspace.mit.edu/handle/1721.1/6171">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-22"></a>Link on page 1113: <a href="http://dspace.mit.edu/handle/1721.1/6272">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-23"></a>Link on page 1114: <a href="http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-24"></a>Link on page 1115: <a href="http://www.ccs.neu.edu/scheme/pubs/dissertation-kohlbecker.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-25"></a>Link on page 1115: <a href="http://www.doc.ic.ac.uk/~rak/papers/IFIP%2074.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-26"></a>Link on page 1115: <a href="http://www.stanford.edu/class/cs240/readings/lamport.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-27"></a>Link on page 1115: <a href="http://www.bitsavers.org/pdf/xerox/parc/techReports/CSL-81-12_Report_On_The_Programming_Language_Euclid.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-28"></a>Link on page 1115: <a href="http://dspace.mit.edu/handle/1721.1/6335">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-29"></a>Link on page 1116: <a href="http://csg.csail.mit.edu/CSGArchives/memos/Memo-117.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-30"></a>Link on page 1116: <a href="http://dspace.mit.edu/handle/1721.1/6296">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-31"></a>Link on page 1116: <a href="http://dspace.mit.edu/handle/1721.1/6327">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-32"></a>Link on page 1116: <a href="http://www-formal.stanford.edu/jmc/recursive.html">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-33"></a>Link on page 1116: <a href="http://www-formal.stanford.edu/jmc/basis.html">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-34"></a>Link on page 1116: <a href="http://www-formal.stanford.edu/jmc/history/lisp.html">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-35"></a>Link on page 1116: <a href="http://www.softwarepreservation.org/projects/LISP/book/LISP%201.5%20Programmers%20Manual.pdf/view">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-36"></a>Link on page 1116: <a href="http://dspace.mit.edu/handle/1721.1/6203">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-37"></a>Link on page 1117: <a href="http://www.cs.cmu.edu/~glmiller/Publications/b2hd-Mi76.html">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-38"></a>Link on page 1117: <a href="http://dspace.mit.edu/handle/1721.1/6622">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-39"></a>Link on page 1117: <a href="http://www.softwarepreservation.org/projects/LISP/MIT/Moon-MACLISP_Reference_Manual-Apr_08_1974.pdf/view">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-40"></a>Link on page 1117: <a href="http://www.unlambda.com/lmman/index.html">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-41"></a>Link on page 1117: <a href="http://maclisp.info/pitmanual">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-42"></a>Link on page 1117: <a href="http://www.outpost9.com/reference/jargon/jargon_toc.html">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-43"></a>Link on page 1118: <a href="http://people.csail.mit.edu/riastradh/t/adams82t.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-44"></a>Link on page 1118: <a href="http://people.csail.mit.edu/jaffer/r4rs_toc.html">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-45"></a>Link on page 1118: <a href="http://people.csail.mit.edu/rivest/Rsapaper.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-46"></a>Link on page 1118: <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.123.8503&amp;rep=rep1&amp;type=pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-47"></a>Link on page 1118: <a href="http://dspace.mit.edu/handle/1721.1/5753">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-48"></a>Link on page 1119: <a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/cltl2.html">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-49"></a>Link on page 1119: <a href="http://dspace.mit.edu/handle/1721.1/5794">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-50"></a>Link on page 1119: <a href="http://www.dourish.com/goodies/jargon.html">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-51"></a>Link on page 1119: <a href="http://dspace.mit.edu/handle/1721.1/5803">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-52"></a>Link on page 1119: <a href="http://dspace.mit.edu/handle/1721.1/6312">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-53"></a>Link on page 1119: <a href="http://groups.csail.mit.edu/mac/users/wisdom/ss-chaos.pdf">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-54"></a>Link on page 1119: <a href="http://dspace.mit.edu/handle/1721.1/6184">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-55"></a>Link on page 1120: <a href="http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.10.4290">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-56"></a>Link on page 1120: <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.83.8567">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-57"></a>Link on page 1120: <a href="http://dspace.mit.edu/handle/1721.1/7095">(Online)</a><br /></li>
+
+<li><a id="17-2-6-2-1-16-58"></a>Link on page 1121: <a href="http://www.aaai.org/Papers/AAAI/1987/AAAI87-011.pdf">(Online)</a><br /></li>
+</ol>
+</li>
+
+<li><a id="17-2-6-2-1-17"></a>List of Exercises<br /></li>
+
+<li><a id="17-2-6-2-1-18"></a>List of Figures<br /></li>
+
+<li><a id="17-2-6-2-1-19"></a>Index<br />
+<p>
+.
+</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/lib/js/head.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/js/reveal.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'convex', // see README of reveal.js for options
+transitionSpeed: 'default',
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3.8.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+</script>
+</body>
+</html>
