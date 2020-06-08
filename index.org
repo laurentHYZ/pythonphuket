@@ -4,19 +4,26 @@
 
 #+REVEAL_TITLE_SLIDE: <h2>%t</h2><h3>%s</h3><p>%A %a</p><p><a href="%u">%u</a></p>
 
+#+REVEAL_TITLE_SLIDE_BACKGROUND: https://images.freeimages.com/images/large-previews/e2a/boise-downtown-1387405.jpg
+
+
 #+Subtitle: let's see
 #+Author: laurent
 #+Email: laurent_pinson@hotmail.com
 #+REVEAL_TALK_URL: https://laurenthyz.github.io/pythonphuket/pythonpresentation.html
 
-* Sick of floating 2
-
+* Sick of floating3 3
+#+ATTR_REVEAL: :frag (roll-in)
 #+ATTR_ORG: :width 600
 [[file:./whichdayisit2.png]]
+#+ATTR_REVEAL: :frag (roll-in)
+- asdf
+- aaa
+- bbb
 
-
-
-
+#+BEGIN_NOTES
+  Enter speaker notes here.
+#+END_NOTES
 
 
 
@@ -66,6 +73,7 @@ I want to tell those people that learning how to code is potentially within your
 * Learn PYTHON with my method and I guarantee to make things click for you.
 If the negative self-talks I have listed above is all that keeps you from starting coding then let me be confidently blunt: you need to work with me, even for a couple of hours.
 I will convince/show you how Python is essentially an easy-to-learn English dialect that can actually be taught very well with a whiteboard, a pen and a sheet of paper.  I have done it enough time to know it works with nothing else than a pen and paper. Whenever necessary I might use some boxes/ropes/wooden pieces too. Essentially the heart of my method and philosophy when teaching beginners is two-fold: 1) the more abstract the subject, the less you should use digital tools* to teach it 2) New and modern subjects should be taught  through traditional methods whenever possible.
+#+REVEAL: split
 Now does it mean that we can learn all of python in a month? No. It means that once you have connected [your original inner learning engine] to [Python] through the use of tools and methods that your brains are familiar with (pen/paper, chalk/blackboard, activities) then you will find yourself on a familiar learning path.
 That stage during which we connect your existing learning engine to the new subject I call it grounding. Grounding is important because it optimizes the germination of new/foreign/abstract knowledge. If you think coding might be difficult for you then the grounding stage is not just important, it is necessary.
 #+ATTR_ORG: :width 600
@@ -75,10 +83,10 @@ The current situation is challenging but truthfully it could very well be an ama
 name, location in Phuket, if you wish to take classes at your place or if  you can come to my office-space in Central. If you have the right hardware setup (especially mic and drawing tablet) it is possible to make online class but I would rather your first 5 hours to be face-to-face. If you are open to group class we can do that, there will not be more than 5 people per class... So  that’s easy, please gather up that type of info and LINE me, this way we have some elements to start planifying.
 I have written this text on one go, at time it actually reads like those generic advertisement we have all received, and you know what? I don’t feel bad about it, in fact since I am confident that I can jump-start your coding, why not knocking-down whatever hesitation you might still have and offer a money-back guarantee.
 
-
+* Slide
 #+ATTR_ORG: :width 600
 [[file:./jealouspython.jpg]]
 
-
-#+ATTR_ORG: :width 600
+* Slide
+ #+ATTR_ORG: :width 600
  [[file:./nottherighttimewithLine.png]]
