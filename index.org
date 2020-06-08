@@ -31,10 +31,11 @@ Today Phuket and the world is out of the woods as far as the COVID19 is concerne
 
 * Hi
 My name is Laurent, I am ex telecom-expert with a passion for teaching programming.
+#+ATTR_ORG: :width 600
+[[https://goo.gl/maps/tLNTzCc5tMBP7JTY7]]
 
 #+ATTR_ORG: :width 600
 [[file:./collage.png]]
-
 
 
 
